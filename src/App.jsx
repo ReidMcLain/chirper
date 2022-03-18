@@ -1,71 +1,87 @@
 import React, { useState, useEffect } from 'react'
+import { TiPencil, TiUser, BiMessageDetail } from "react-icons/ti";
+import { v4 as uuidv4 } from 'uuid';
+import chirperLogo from './assets/ChirperIcon.png'
+import moment from 'moment';
 import ChirpSyntax from './components/ChirpCard';
 
 const App = () => {
-
     const [idCount, setIdCount] = useState(4);
     const [username, setUsername] = useState('');
     const [msg, setMsg] = useState('');
     const [chirps, setChirps] = useState([
         {
-            id: 1,
+            id: uuidv4(),
             username: "therealDickVitale",
-            msg: 'March Madness BABY #besttimeoftheyear'
+            msg: 'March Madness BABY #besttimeoftheyear',
+            timestamp: moment().format('MMMM Do YYYY, h:mm:ss a')
         },
         {
-            id: 2,
+            id: uuidv4(),
             username: "BarackObama",
-            msg: 'Check out my march madness bracket #iliterallypickthefavorites'
+            msg: 'Check out my march madness bracket #iliterallypickthefavorites',
+            timestamp: moment().format('MMMM Do YYYY, h:mm:ss a')
         },
         {
-            id: 3,
+            id: uuidv4(),
             username: "espn",
-            msg: '11 seed Michigan upsets 6 seed Colorado State 75-63! #marchmadness'
+            msg: '15 seed St Peters upsets 2 seed Kentucky 85-79/OT! #marchmadness',
+            timestamp: moment().format('MMMM Do YYYY, h:mm:ss a')
         }]
     )
+
+    const handleUserNameChange = e => setUsername(e.target.value);
+    const handleMessageChange = e => setMsg(e.target.value);
 
     let newChirp = () => {
         if (username == "" || msg == "") {
             alert('please fill out both fields!');
         } else {
-        setChirps([...chirps, {
-            id: idCount,
-            username: username,
-            msg: msg
-        }])
-        setIdCount(idCount + 1);
-    }
+            setChirps([...chirps, {
+                id: uuidv4(),
+                username: username,
+                msg: msg,
+                timestamp: moment().format('MMMM Do YYYY, h:mm:ss a')
+            }])
+            setIdCount(idCount + 1);
+        }
     }
 
     return (
         <>
             <div>
                 <div>
-                    <h1 class="pageTitle">Home</h1>
-                    <div className="container border rounded mt-2 text-center">
+                    <div id="titleBox" className="d-flex flex-direction-row align-items-center">
+                        <img id="blueBird" src={chirperLogo} />
+                        <h1 class="pageTitle">Chirper</h1>
+                    </div>
+                    <div className="container border rounded text-center">
                         <div className="row">
-                            {/* <div className="col"> */}
-                            <div class="form-group p-1 mt-1">
-                                <input id="userNameBox" value={username} onChange={e => setUsername(e.target.value)}
-                                    class="form-control" placeholder="Username"
-                                />
-                            </div>
                             <div class="form-group">
-
-                                <textarea id="chirpBox" value={msg} onChange={e => setMsg(e.target.value)}
-                                    class="form control mt-3"
-                                    row="3"
-                                    placeholder="What happening?"
-                                ></textarea>
-                                <div className="col 2 mb-3">
-                                    <button id="submit-button"
-                                        class="btn btn-primary mt-3"
-                                        onClick={() => {
-                                            newChirp()
-                                        }}>Chirp</button>
+                                <div className="d-flex flex-direction-row mt-3">
+                                    <div className="card-header">
+                                        <TiUser className="align-self-center" />
+                                    </div>
+                                    <input id="userNameBox" value={username} onChange={handleUserNameChange}
+                                        class="form-control" placeholder="Username"
+                                    />
                                 </div>
+                                <div className="d-flex flex-direction-row mt-3">
+                                    <div className="card-header">
+                                        <TiPencil className="align-self-center" />
+                                    </div>
+                                    <textarea id="chirpBox" value={msg} onChange={handleMessageChange}
+                                        class="form control"
+                                        row="3"
+                                        placeholder="What happening?"
+                                    ></textarea>
+                                </div>
+                                <button id="submit-button"
+                                    class="btn btn-primary mt-3"
+                                    onClick={() => {
+                                        newChirp()
+                                    }}>Chirp</button>
                             </div>
-                            {/* </div> */}
                         </div>
                     </div>
                 </div>
@@ -77,7 +93,7 @@ const App = () => {
                         <ul className="list-group">
                             {chirps.map(chirp => (
                                 <li className="list-group-item" key={chirp.id}>
-                                    <ChirpSyntax id={chirp.id} username={chirp.username} msg={chirp.msg} />
+                                    <ChirpSyntax id={chirp.id} username={chirp.username} msg={chirp.msg} timestamp={chirp.timestamp} />
                                 </li>
                             ))}
                         </ul>

@@ -14,12 +14,14 @@
     height: 6em;
 }
 
- #userNameBox {
-    width: 97%;
-    margin-left:9px;
-    
-} 
-
 .pageTitle {
     color: #1D9Bf0;
+}
+
+#blueBird {
+    height: 75px;
+}
+
+#titleBox {
+    justify-content: center;
 }
