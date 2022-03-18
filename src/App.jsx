@@ -53,17 +53,17 @@ const App = () => {
                 <div>
                     <div id="titleBox" className="d-flex flex-direction-row align-items-center">
                         <img id="blueBird" src={chirperLogo} />
-                        <h1 class="pageTitle">Chirper</h1>
+                        <h1 className="pageTitle">Chirper</h1>
                     </div>
                     <div className="container border rounded text-center">
                         <div className="row">
-                            <div class="form-group">
+                            <div className="form-group">
                                 <div className="d-flex flex-direction-row mt-3">
                                     <div className="card-header">
                                         <TiUser className="align-self-center" />
                                     </div>
                                     <input id="userNameBox" value={username} onChange={handleUserNameChange}
-                                        class="form-control" placeholder="Username"
+                                        className="form-control" placeholder="Username"
                                     />
                                 </div>
                                 <div className="d-flex flex-direction-row mt-3">
@@ -71,13 +71,13 @@ const App = () => {
                                         <TiPencil className="align-self-center" />
                                     </div>
                                     <textarea id="chirpBox" value={msg} onChange={handleMessageChange}
-                                        class="form control"
+                                        className="form control"
                                         row="3"
                                         placeholder="What happening?"
                                     ></textarea>
                                 </div>
                                 <button id="submit-button"
-                                    class="btn btn-primary mt-3"
+                                    className="btn btn-primary mt-3"
                                     onClick={() => {
                                         newChirp()
                                     }}>Chirp</button>

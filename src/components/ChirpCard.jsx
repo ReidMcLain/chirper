@@ -12,7 +12,7 @@ const ChirpSyntax = (props) => {
         </div>
         <p className="card-text p-1 m-1">{props.msg}</p>
     </div>
-        <h7>{props.timestamp}</h7>
+        <p>{props.timestamp}</p>
     </>
     )
 }
