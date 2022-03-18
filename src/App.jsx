@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { TiPencil, TiUser, BiMessageDetail } from "react-icons/ti";
+import React, { useState } from 'react'
+import { TiPencil, TiUser } from "react-icons/ti";
 import { v4 as uuidv4 } from 'uuid';
 import chirperLogo from './assets/ChirperIcon.png'
 import moment from 'moment';
@@ -14,19 +14,19 @@ const App = () => {
             id: uuidv4(),
             username: "therealDickVitale",
             msg: 'March Madness BABY #besttimeoftheyear',
-            timestamp: moment().format('MMMM Do YYYY, h:mm:ss a')
+            timestamp: 'March 17th 2022, 10:26:07 am'
         },
         {
             id: uuidv4(),
             username: "BarackObama",
             msg: 'Check out my march madness bracket #iliterallypickthefavorites',
-            timestamp: moment().format('MMMM Do YYYY, h:mm:ss a')
+            timestamp: 'March 17th 2022, 11:25:59 am'
         },
         {
             id: uuidv4(),
             username: "espn",
             msg: '15 seed St Peters upsets 2 seed Kentucky 85-79/OT! #marchmadness',
-            timestamp: moment().format('MMMM Do YYYY, h:mm:ss a')
+            timestamp: 'March 17th 2022, 1:01:44 pm'
         }]
     )
 
